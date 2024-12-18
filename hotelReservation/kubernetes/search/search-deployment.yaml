@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - command:
-            - ./search
+            - /go/bin/search
           image: deathstarbench/hotel-reservation:latest
           name: hotel-reserv-search
           ports:
