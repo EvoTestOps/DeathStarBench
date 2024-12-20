@@ -55,7 +55,7 @@ _parameter description:--host means the address of host; --headless means not st
 ## Metric
 Go to the corresponding directory
 ```
-cd <path-of-repo>/hotelReservation/prometheus
+cd <path-of-repo>/hotelReservation/UH_prometheus
 ```
 
 Create a configmap
