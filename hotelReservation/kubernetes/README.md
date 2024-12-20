@@ -8,7 +8,11 @@
 ## Running the Hotel Reservation application
 
 ### Before you start
-
+- Clone the repository
+```
+git clone https://github.com/EvoTestOps/DeathStarBench.git
+cd DeathStarBench
+```
 - Ensure that the necessary local images have been made.
   - `<path-of-repo>/hotelReservation/kubernetes/scripts/build-docker-images.sh`
   if you intend to change it, remember to change the username and image name in the build script and also all deployments as well.
