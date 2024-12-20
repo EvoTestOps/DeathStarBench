@@ -27,7 +27,7 @@ Before deploying the services, you need to build the necessary Docker images:
 cd hotelReservation/kubernetes/scripts
 ```
 2. Build the Docker images using the provided script:
-```
+```bash
 ./build-docker-images.sh
 ```
 > [!IMPORTANT]
@@ -139,6 +139,68 @@ View the specific pod logs
 kubectl logs <pod's name>
 ```
 
+# Kubernetes Common Commands Sheet
 
+## Pod Operations
+```bash
+# List all pods
+kubectl get pods [-n namespace]
 
+# Get pod details
+kubectl describe pod <pod-name>
+
+# Get pod logs
+kubectl logs <pod-name>
+kubectl logs -f <pod-name>    # Follow log output
+
+# Execute command in pod
+kubectl exec -it <pod-name> -- /bin/bash
+
+# Delete pod
+kubectl delete pod <pod-name>
+```
+## Service Operations
+```
+# List all services
+kubectl get services
+kubectl get svc    # Short form
+
+# Get service details
+kubectl describe service <service-name>
+
+# Port forwarding
+kubectl port-forward svc/<service-name> <local-port>:<service-port>
+```
+## Deployment Operations
+```
+# List deployments
+kubectl get deployments
+
+# Scale deployment
+kubectl scale deployment <deployment-name> --replicas=<number>
+
+# Rollout status
+kubectl rollout status deployment/<deployment-name>
+
+# Rollback deployment
+kubectl rollout undo deployment/<deployment-name>
+```
+## Namespace Operations
+```
+# List namespaces
+kubectl get namespaces
+kubectl get ns    # Short form
+
+# Create namespace
+kubectl create namespace <namespace-name>
+
+# Switch namespace
+kubectl config set-context --current --namespace=<namespace-name>
+
+# Delete namespace (and everything in it)
+kubectl delete namespace <namespace-name>
+```
+> [!NOTE]
+> Replace text in `<>` with your actual values.
+> Add `-n <namespace>` to any command to specify a namespace.
 
