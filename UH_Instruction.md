@@ -52,6 +52,17 @@ locust -f locust.py --host=http://<your-external-IP-of-frontend>:5000 --headless
 _parameter description:--host means the address of host; --headless means not start the graphical interface and output the result in terminal;- u means the number of concurrent users; - r means the number of new users per second; -t means the duration of the test_
 
 # Monitoring
+## Trace
+Watch for the external-IP of jaeger:
+```
+kubectl get svc jaeger -w
+```
+To see Jaeger's UI, visit your own jaeger url. It should be the following structure:
+_http://your-external-IP-of-jaeger:16686_
+
+<img width="1246" alt="image" src="https://github.com/user-attachments/assets/7ff390aa-eb9f-488a-b6ce-8fe7e15db5b8" />
+You can select different services from the service list to see the corresponding trace
+
 ## Metric
 Go to the corresponding directory
 ```
