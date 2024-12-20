@@ -9,7 +9,7 @@
 
 ### Before you start
 - Clone the repository
-```
+```bash
 git clone https://github.com/EvoTestOps/DeathStarBench.git
 cd DeathStarBench
 ```
