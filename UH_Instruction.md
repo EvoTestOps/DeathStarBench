@@ -19,6 +19,7 @@ Follow the [readme](https://github.com/EvoTestOps/DeathStarBench/tree/master/hot
 - luarocks (apt-get install luarocks)
 - luasocket (luarocks install luasocket)
 ## Before you start
+
 Ensure that the necessary local images have been made:
  bash
   <path-of-repo>/hotelReservation/kubernetes/scripts/build-docker-images.sh
@@ -34,6 +35,14 @@ kubectl get pods
 
 # Locust test
 ## Install locust
+- Opiton.1: Using Conda
+We strongly recommend using Conda virtual environment to avoid technical problems:
+```
+conda create --name hotel python=3.11
+conda activate hotel
+conda install -c conda-forge locust
+```
+- Optioon.2: Using pip
 ```
 sudo apt-get update 
 sudo apt install python3-pip
