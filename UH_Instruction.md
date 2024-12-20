@@ -21,15 +21,16 @@ Follow the [readme](https://github.com/EvoTestOps/DeathStarBench/tree/master/hot
 ## Before you start
 
 Ensure that the necessary local images have been made:
- bash
+ ```bash
   <path-of-repo>/hotelReservation/kubernetes/scripts/build-docker-images.sh
+```
 ## Deploy services
 
-```
+```bash
 kubectl apply -Rf <path-of repo>/hotelReservation/kubernetes/
 ```
 Wait until the deployment is complete to view the result
-```
+```bash
 kubectl get pods
 ```
 
@@ -37,13 +38,13 @@ kubectl get pods
 ## Install locust
 - Opiton.1: Using Conda
 We strongly recommend using Conda virtual environment to avoid technical problems:
-```
+```bash
 conda create --name hotel python=3.11
 conda activate hotel
 conda install -c conda-forge locust
 ```
 - Optioon.2: Using pip
-```
+```bash
 sudo apt-get update 
 sudo apt install python3-pip
 pip3 install locust
@@ -51,11 +52,11 @@ export PATH=$PATH:$HOME/.local/bin
 ```
 ## Executing the test:
 Watch for the external-IP of frontend:
-```
+```bash
 kubectl get svc frontend -w
 ```
 Then
-```
+```bash
 locust -f locust.py --host=http://<your-external-IP-of-frontend>:5000 --headless -u 10 -r 2 -t 10s
 ```
 _parameter description:--host means the address of host; --headless means not start the graphical interface and output the result in terminal;- u means the number of concurrent users; - r means the number of new users per second; -t means the duration of the test_
@@ -63,7 +64,7 @@ _parameter description:--host means the address of host; --headless means not st
 # Monitoring
 ## Trace
 Watch for the external-IP of jaeger:
-```
+```bash
 kubectl get svc jaeger -w
 ```
 To see Jaeger's UI, visit your own jaeger url. It should be the following structure:
@@ -74,16 +75,16 @@ You can select different services from the service list to see the corresponding
 
 ## Metric
 Go to the corresponding directory
-```
+```bash
 cd <path-of-repo>/hotelReservation/UH_prometheus
 ```
 
 Create a configmap
-```
+```bash
 kubectl create configmap prometheus-config --from-file=prometheus.yml
 ```
 Apply related resources
-```
+```bash
 kubectl apply -f node-exporter-service.yaml
 kubectl apply -f node-exporter.yaml
 kubectl apply -f prometheus-config.yaml
@@ -92,7 +93,7 @@ kubectl apply -f prometheus-rbac.yaml
 kubectl apply -f prometheus-service.yaml
 ```
 Gets the external IP of the prometheus service
-```
+```bash
 kubectl get svc | grep prometheus
 ```
 To see prometheus's UI, visit your own prometheus url. It should be the following structure:
@@ -100,16 +101,16 @@ _http://your-external-IP-of-prometheus:9090_
 <img width="1251" alt="image" src="https://github.com/user-attachments/assets/ed2bff69-625a-4313-a5fb-760d2ff67325" />
 Some sample query metrics
 - CPU utilization
-```
+```bash
 rate(node_cpu_seconds_total{mode="system"}[1m])
 ```
 - Memory usage
-```
+```bash
 node_memory_MemTotal_bytes - node_memory_MemFree_bytes
 
 ```
 - Disk usage
-```
+```bash
 node_filesystem_size_bytes - node_filesystem_free_bytes
 ```
 Enter the query and click the "Execute" button to view the time series chart in the Graph TAB or the specific values in the Table TAB.
@@ -118,11 +119,11 @@ Enter the query and click the "Execute" button to view the time series chart in 
 
 ## Logs
 Get pods name
-```
+```bash
 kubectl get pods
 ```
 View the specific pod logs
-```
+```bash
 kubectl logs <pod's name>
 ```
 
