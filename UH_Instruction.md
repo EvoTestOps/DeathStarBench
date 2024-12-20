@@ -12,7 +12,7 @@
 
 
 # Deploy hotelReservation microservice system on upcloud
-Follow the [readme](https://github.com/EvoTestOps/DeathStarBench/tree/master/hotelReservation) instructions to install
+
 ## Pre-requirements:
 - Docker
 - Docker-compose
@@ -20,10 +20,22 @@ Follow the [readme](https://github.com/EvoTestOps/DeathStarBench/tree/master/hot
 - luasocket (luarocks install luasocket)
 ## Before you start
 
-Ensure that the necessary local images have been made:
- ```bash
-  <path-of-repo>/hotelReservation/kubernetes/scripts/build-docker-images.sh
+Before deploying the services, you need to build the necessary Docker images:
+
+1. Navigate to the scripts directory:
+```bash
+cd hotelReservation/kubernetes/scripts
 ```
+2. Build the Docker images using the provided script:
+```
+./build-docker-images.sh
+```
+> [!IMPORTANT]
+> If you want to use your own Docker registry, you need to:
+> - Open `build-docker-images.sh` and modify the `REGISTRY` variable to your Docker username
+> - Update all deployment YAML files in the `kubernetes/` directory to use your modified image names
+> - Example: Change `igorrudyk1/user-service:latest` to `your-username/user-service:latest`
+
 ## Deploy services
 
 ```bash
