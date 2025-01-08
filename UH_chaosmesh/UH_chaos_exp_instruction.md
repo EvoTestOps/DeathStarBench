@@ -1,7 +1,6 @@
 # Install Chaos Mesh using Helm
-## Prerequisites
 
-### Install Helm
+## Install Helm
 From Apt (Debian/Ubuntu)
 ```bash
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
@@ -16,7 +15,7 @@ To check whether Helm is installed or not, execute the following command:
 ```bash
 helm version
 ```
-### Install Chaos Mesh using Helm
+## Install Chaos Mesh using Helm
 Add the Chaos Mesh repository to the Helm repository:
 ```bash
 helm repo add chaos-mesh https://charts.chaos-mesh.org
