@@ -48,14 +48,14 @@ kubectl get pods
 
 # Locust test
 ## Install locust
-- Opiton.1: Using Conda
+- Option.1: Using Conda
 We strongly recommend using Conda virtual environment to avoid technical problems:
 ```bash
 conda create --name hotel python=3.11
 conda activate hotel
 conda install -c conda-forge locust
 ```
-- Optioon.2: Using pip
+- Option.2: Using pip
 ```bash
 sudo apt-get update 
 sudo apt install python3-pip
