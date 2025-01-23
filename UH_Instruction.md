@@ -69,7 +69,7 @@ kubectl get svc frontend -w
 ```
 Then
 ```bash
-locust -f locust.py --host=http://<your-external-IP-of-frontend>:5000 --headless -u 10 -r 2 -t 10s
+locust -f uh_locust_tests/locust.py --host=http://<your-external-IP-of-frontend>:5000 --headless -u 10 -r 2 -t 10s
 ```
 _parameter description:--host means the address of host; --headless means not start the graphical interface and output the result in terminal;- u means the number of concurrent users; - r means the number of new users per second; -t means the duration of the test_
 
