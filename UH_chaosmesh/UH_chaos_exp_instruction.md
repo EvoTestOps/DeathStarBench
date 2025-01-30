@@ -47,17 +47,36 @@ kubectl apply -f UH_pod-kill-exp.yaml
 
 Please refer to the following [official website of chaos-mesh](https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/) for more examples of experimental design
 ## Check results using Chaos Dashboard
-Since Dashboard is a NodePort service, we can access it through the external IP of the node + the port number of the service. ***For example: http://\<External IP\>: 30951***
+Since Dashboard is a NodePort service, we can access it through the external IP of the node + the port number of the service. For example: [http://External_IP:Port](http://External_IP:Port)
 
-Check the external IP of nodes
+
+Check the external IP(s) of nodes
 ```bash
 kubectl get nodes -o wide
+```
+Check the port of chaos-daskport NodePort
+```bash
+kubectl get svc -n chaos-mesh
+```
+Your output will be something like this. In below the correct port number is 30820 
+```bash
+NAME                            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                 AGE
+chaos-daemon                    ClusterIP   None             <none>        31767/TCP,31766/TCP                     22m
+chaos-dashboard                 NodePort    10.140.229.113   <none>        2333:30820/TCP,2334:32143/TCP           22m
+chaos-mesh-controller-manager   ClusterIP   10.131.78.187    <none>        443/TCP,10081/TCP,10082/TCP,10080/TCP   22m
+chaos-mesh-dns-server           ClusterIP   10.137.78.127    <none>        53/UDP,53/TCP,9153/TCP,9288/TCP         22m
 ```
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/19a487cd-9107-4af9-a855-bf1686525e63" />
 
  
 Click  “Click here to generate” and follow its instruction, then you can get in the interface:
+
+![image](https://github.com/user-attachments/assets/f034f7a9-cc35-4e7f-8f5e-674245203ae0)
+
+
+
+
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/13f51730-c164-4a6e-896f-d48168625666" />
 
  
