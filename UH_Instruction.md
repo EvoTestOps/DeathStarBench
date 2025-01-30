@@ -6,25 +6,39 @@
 <img width="468" alt="image" src="https://github.com/user-attachments/assets/6888cd27-bb9c-4b25-b097-4872be66c5ab" />
 <img width="468" alt="image" src="https://github.com/user-attachments/assets/84fc3925-d548-48e5-be5e-157481bcf080" />
 <img width="468" alt="image" src="https://github.com/user-attachments/assets/32fc80bf-611c-41a6-9738-22a293c1c995" />
+
+Install  kubectl: [https://kubernetes.io/docs/tasks/tools/install-kubectl-linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+
+Export KUBECONFIG that you downloaded above (use full path). 
+
+Check that deploying kubernetes has worked. 
+
 <img width="468" alt="image" src="https://github.com/user-attachments/assets/8c176533-b392-4d40-a5c1-73396384a5b2" />
 
-**Ps: kubectl needs to be installed in advance:** [Official address](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+
 
 
 # Deploy hotelReservation microservice system on upcloud
 
-## Pre-requirements:
+Clone the repo
+```bash
+git clone https://github.com/EvoTestOps/DeathStarBench.git
+```
+
+## Build docker images (Optional)
+### Pre-requirements:
 - Docker
 - Docker-compose
 - luarocks (apt-get install luarocks)
 - luasocket (luarocks install luasocket)
-## Before you start
+### Before you start
 
 Before deploying the services, you need to build the necessary Docker images:
 
 1. Navigate to the scripts directory:
 ```bash
-cd hotelReservation/kubernetes/scripts
+git clone https://github.com/EvoTestOps/DeathStarBench.git
+cd DeathStarBench/hotelReservation/kubernetes/scripts
 ```
 2. Build the Docker images using the provided script:
 ```bash
@@ -39,7 +53,7 @@ cd hotelReservation/kubernetes/scripts
 ## Deploy services
 
 ```bash
-kubectl apply -Rf <path-of repo>/hotelReservation/kubernetes/
+kubectl apply -Rf DeathStarBench/hotelReservation/kubernetes/
 ```
 Wait until the deployment is complete to view the result
 ```bash
@@ -63,7 +77,7 @@ pip3 install locust
 export PATH=$PATH:$HOME/.local/bin
 ```
 ## Executing the test:
-Watch for the external-IP of frontend:
+Wait for the external-IP of frontend (might take up to 10 minutes):
 ```bash
 kubectl get svc frontend -w
 ```
