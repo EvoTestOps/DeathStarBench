@@ -71,16 +71,27 @@ chaos-mesh-dns-server           ClusterIP   10.137.78.127    <none>        53/UD
 
  
 Click  “Click here to generate” and follow its instruction, then you can get in the interface:
-
-![image](https://github.com/user-attachments/assets/f034f7a9-cc35-4e7f-8f5e-674245203ae0)
-
-
+<img width="751" alt="Screenshot 2025-01-30 at 16 14 13" src="https://github.com/user-attachments/assets/eb377bac-e147-44de-b8d1-b8a652455270" />
+<img width="752" alt="Screenshot 2025-01-30 at 16 14 34" src="https://github.com/user-attachments/assets/253dcb26-47c5-4921-886c-ff00eae18c52" />
 
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/13f51730-c164-4a6e-896f-d48168625666" />
 
+> [!NOTE]
+> Make sure get the correct account's token.
  
-You can check corresponding experiment and related events.
+Then you can check corresponding experiment and related events.
 
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/0724488a-083d-476a-a127-9fed93477578" />
 
+## Create your own chaos experiment
+It is recommended to configure the experiment by writing a YAML file. Please refer to the official documentation for the relevant [scope](https://chaos-mesh.org/docs/define-chaos-experiment-scope/) and [schedule rules](https://chaos-mesh.org/docs/define-scheduling-rules/).
+
+If you want to rerun the experiment, use:
+```bash
+kubectl delete -f <corresponding_experiment.yaml>
+```
+Then, run the command again:
+```bash
+kubectl apply -f <corresponding_experiment.yaml>
+```
 
