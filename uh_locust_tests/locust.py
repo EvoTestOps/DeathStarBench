@@ -101,7 +101,7 @@ class HotelReservationUser(HttpUser):
         
         headers = self.get_trace_headers()
         
-        with self.client.get(
+        with self.client.post(
             "/user",
             params={
                 "username": username,
@@ -110,10 +110,10 @@ class HotelReservationUser(HttpUser):
             headers=headers,
             catch_response=True
         ) as response:
-            if "Login successfully" in response.text:
+            if response.status_code == 200:
                 response.success()
             else:
-                response.failure("Login failed")
+                response.failure(f"Login failed with status {response.status_code}")
 
     @task(5)  # 0.5% -> 5
     def make_reservation(self):
@@ -124,7 +124,7 @@ class HotelReservationUser(HttpUser):
         
         headers = self.get_trace_headers()
         
-        with self.client.get(
+        with self.client.post(
             "/reservation",
             params={
                 "inDate": in_date,
@@ -138,7 +138,7 @@ class HotelReservationUser(HttpUser):
             headers=headers,
             catch_response=True
         ) as response:
-            if "Reserve successfully" in response.text:
+            if response.status_code == 200:
                 response.success()
             else:
-                response.failure("Reservation failed")
+                response.failure("Reservation failed with status {response.status_code}")
