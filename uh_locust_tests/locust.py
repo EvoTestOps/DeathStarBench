@@ -141,4 +141,4 @@ class HotelReservationUser(HttpUser):
             if response.status_code == 200:
                 response.success()
             else:
-                response.failure("Reservation failed with status {response.status_code}")
+                response.failure(f"Reservation failed with status {response.status_code}")
