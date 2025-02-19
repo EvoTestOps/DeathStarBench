@@ -33,8 +33,6 @@ git clone https://github.com/EvoTestOps/DeathStarBench.git
 - luasocket (luarocks install luasocket)
 ### Before you start
 
-Before deploying the services, you need to build the necessary Docker images:
-
 1. Navigate to the scripts directory:
 ```bash
 git clone https://github.com/EvoTestOps/DeathStarBench.git
